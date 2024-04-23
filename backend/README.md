@@ -1,20 +1,3 @@
-MAUGRAS Alexandre
-node server.js
-
-curl -X POST \
-  http://localhost:3001/auth/register \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "username": "unicorn",
-    "password": "unicorn"
-}'
-curl -X POST \
-  http://localhost:3001/auth/login \   
-  -H 'Content-Type: application/json' \
-  -d '{
-    "username": "unicorn",
-    "password": "unicorn"
-}'
 
 curl -X POST \
   http://localhost:3001/passwords \
