@@ -18,7 +18,6 @@ router.use(authenticateUser);
 // Endpoint pour récupérer toutes les notes
 router.get('/', authenticateUser, (req, res) => {
     const userDirectory = path.join(usersDirectory, req.user.username);
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAaaAa" , userDirectory);
     const userNotesFilePath = path.join(userDirectory, 'notes.json');
 
     // Lire les notes depuis le fichier spécifique à cet utilisateur
@@ -33,10 +32,7 @@ router.get('/', authenticateUser, (req, res) => {
     });
 });
 
-// Endpoint pour créer une nouvelle note
-// Endpoint pour créer une nouvelle note
-// Endpoint pour créer une nouvelle note
-// Lire les notes depuis le fichier de l'utilisateur
+
 // Endpoint pour créer une nouvelle note
 router.post('/', authenticateUser, (req, res) => {
     const username = req.user.username;

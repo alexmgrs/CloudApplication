@@ -1,9 +1,10 @@
+// passwordListRoutes.js
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 const { authenticateUser } = require('./authMiddleware');
-const { generateStrongPassword, testPasswordStrength} = require('./passwordUtils');
+const { generateStrongPasswordFunction, testPasswordStrength} = require('./passwordUtils');
 // Fonction pour obtenir le chemin du fichier de mots de passe de l'utilisateur
 const getUserPasswordsFilePath = (username) => {
     const userPasswordsDir = path.join(__dirname, '..', '..', 'data', 'users', username);
@@ -47,7 +48,7 @@ router.post('/', authenticateUser, (req, res) => {
         const includeNumbers = newPassword.includeNumbers || false; // Par défaut, ne pas inclure de chiffres
         const includeSpecialChars = newPassword.includeSpecialChars || false; // Par défaut, ne pas inclure de caractères spéciaux
         // Générer un mot de passe fort
-        newPassword.password = generateStrongPassword(length, includeNumbers, includeSpecialChars);
+        newPassword.password = generateStrongPasswordFunction(length, includeNumbers, includeSpecialChars);
     }
 
     // Calculer la force du mot de passe
@@ -106,7 +107,7 @@ router.post('/', authenticateUser, (req, res) => {
 // Endpoint pour mettre à jour un mot de passe existant
 router.put('/:id', authenticateUser, (req, res) => {
     const id = parseInt(req.params.id);
-    const { useStrongPassword, passwordLength, includeNumbers, includeSpecialChars, ...updatedFields } = req.body;
+    const { generateStrongPassword, passwordLength, includeNumbers, includeSpecialChars, ...updatedFields } = req.body;
     const username = req.user.username;
 
     // Chemin du fichier de mots de passe de l'utilisateur
@@ -141,8 +142,8 @@ router.put('/:id', authenticateUser, (req, res) => {
         }
 
         // Générer un nouveau mot de passe fort si nécessaire
-        if (useStrongPassword) {
-            const newPassword = generateStrongPassword(passwordLength, includeNumbers, includeSpecialChars);
+        if (generateStrongPassword) {
+            const newPassword = generateStrongPasswordFunction(passwordLength, includeNumbers, includeSpecialChars);
             updatedPassword.password = newPassword;
             // Ajouter les détails de la génération du mot de passe fort
             updatedPassword.generateStrongPassword = true;

@@ -1,7 +1,8 @@
+// passwordUtils.js
 const fs = require('fs');
 const path = require('path');
 
-function generateStrongPassword(length, includeNumbers, includeSpecialChars) {
+function generateStrongPasswordFunction(length, includeNumbers, includeSpecialChars) {
     const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
     const numberChars = '0123456789';
@@ -56,7 +57,7 @@ function testPasswordStrength(password) {
     // Vérifier la longueur du mot de passe
     const length = password.length;
     if (length < 8) {
-        return 'Faible'; // Si la longueur est inférieure à 8 caractères
+        return 'Weak'; // Si la longueur est inférieure à 8 caractères
     }
 
     // Vérifier la diversité des caractères
@@ -78,29 +79,29 @@ function testPasswordStrength(password) {
 
     // Déterminer la force du mot de passe en fonction du score
     if (score === 1) {
-        return 'Faible'; // Si le mot de passe ne contient qu'un seul type de caractères
+        return 'Weak'; // Si le mot de passe ne contient qu'un seul type de caractères
     } else if (score === 2 && length < 12) {
-        return 'Moyenne'; // Si le mot de passe contient deux types de caractères mais est court
+        return 'Medium'; // Si le mot de passe contient deux types de caractères mais est court
     } else if (score === 2 && length >= 12) {
-        return 'Forte'; // Si le mot de passe contient deux types de caractères et est long
+        return 'Strong'; // Si le mot de passe contient deux types de caractères et est long
     } else if (score === 3 && length < 12) {
-        return 'Forte'; // Si le mot de passe contient trois types de caractères mais est court
+        return 'Strong'; // Si le mot de passe contient trois types de caractères mais est court
     } else if (score === 3 && length >= 12) {
-        return 'Très forte'; // Si le mot de passe contient trois types de caractères et est long
+        return 'Very Strong'; // Si le mot de passe contient trois types de caractères et est long
     } else if (score === 4) {
-        return 'Très forte'; // Si le mot de passe contient tous les types de caractères
+        return 'Very Strong'; // Si le mot de passe contient tous les types de caractères
     }
 
     // Si le mot de passe contient des suites logiques
     if (hasSequentialChars || hasSequentialNumbers) {
-        return 'Faible'; // Considérer le mot de passe comme faible s'il contient des suites logiques
+        return 'Weak'; // Considérer le mot de passe comme faible s'il contient des suites logiques
     }
 
     // Si le mot de passe ne correspond à aucun critère précédent, le considérer comme fort par défaut
-    return 'Forte';
+    return 'Strong';
 }
 
 
 
 
-module.exports = { generateStrongPassword, arePasswordsIdentical, testPasswordStrength };
+module.exports = { generateStrongPasswordFunction, arePasswordsIdentical, testPasswordStrength };

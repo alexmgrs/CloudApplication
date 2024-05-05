@@ -1,0 +1,140 @@
+/*PopupForm.css*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Boutons */
+button {
+    background-color: black; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement intérieur */
+    border: none; /* Supprimer les bordures */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de la souris */
+    margin-right: 10px; /* Marge à droite pour l'espacement entre les boutons */
+}
+
+/* Liens */
+a {
+    color: #007bff; /* Couleur du lien */
+    text-decoration: none; /* Supprimer le soulignement par défaut */
+    margin-left: 10px; /* Marge à gauche pour l'espacement entre les liens */
+}
+
+/* Formulaires */
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%; /* Largeur totale */
+    padding: 10px; /* Espacement intérieur */
+    margin-bottom: 10px; /* Marge en bas pour l'espacement entre les champs */
+    border-radius: 4px; /* Coins arrondis */
+    border: 1px solid #ccc; /* Bordure grise */
+}
+
+/* Popup */
+.form-popup {
+    position: fixed; /* Position fixe pour rester au-dessus du contenu */
+    top: 50%; /* Position verticale au milieu */
+    left: 50%; /* Position horizontale au milieu */
+    transform: translate(-50%, -50%); /* Décalage de -50% pour centrer horizontalement et verticalement */
+    z-index: 9; /* Au-dessus du contenu */
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    width: 80%; /* Largeur */
+    max-width: 400px; /* Largeur maximale */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-container {
+    background-color: #fefefe; /* Fond blanc */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.password-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 500fr)); /* Réglez la largeur minimale et maximale des rectangles */
+    grid-gap: 20px;
+}
+
+.password-card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.password-actions {
+    margin-top: 10px;
+}
+
+.password-actions button {
+    margin-right: 10px;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-checkbox {
+    margin-right: 0.5rem;
+}
+
+.small-btn {
+    padding: 5px 10px; /* Ajustez la taille du padding */
+    font-size: 14px; /* Ajustez la taille de la police */
+}
+
+.cancel {
+    color: #aaa; /* Couleur du texte */
+    float: right; /* Alignement à droite */
+    font-size: 14px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+    cursor: pointer; /* Curseur de la souris */
+    margin-top: 10px; /* Marge en haut pour l'espacement */
+}
+
+
+
+/* Assurer que les labels sont toujours visibles */
+
+

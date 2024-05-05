@@ -1,0 +1,33 @@
+/* DashboardPage.css */
+
+.dashboard-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    height: 100vh; /* Pour occuper toute la hauteur de la vue */
+    flex-direction: column; /* Alignez les éléments verticalement */
+}
+
+.menu-container {
+    margin-top: 20px; /* Ajoutez une marge au-dessus des boutons */
+}
+
+.menu-links {
+    display: flex;
+    justify-content: center; /* Alignez les éléments au centre horizontalement */
+}
+
+.menu-link {
+    background-color: lightskyblue;
+    color: white;
+    padding: 20px 40px; /* Ajustez la taille des boutons */
+    border-radius: 8px; /* Coins arrondis */
+    margin: 10px; /* Marge entre les boutons */
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition en douceur */
+}
+
+.menu-link:hover {
+    background-color: powderblue;
+}

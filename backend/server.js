@@ -1,15 +1,17 @@
-// server.js
-
 const express = require('express');
-const bodyParser = require('body-parser'); // Import du module body-parser
-const authRoutes = require('./routes/authRoutes'); // Import du fichier de routes d'authentification
-const { authenticateUser } = require('./routes/authMiddleware'); // Import du middleware d'authentification
+const bodyParser = require('body-parser');
+const cors = require('cors'); // Import du module CORS
+const authRoutes = require('./routes/authRoutes');
+const { authenticateUser } = require('./routes/authMiddleware');
 
 const app = express();
 const PORT = 3001;
 
 // Utilisation du middleware body-parser pour parser les corps de requête en JSON
 app.use(bodyParser.json());
+
+// Middleware CORS pour autoriser les requêtes provenant de différents domaines
+app.use(cors());
 
 // Import des routes de gestion des mots de passe
 const passwordListRoutes = require('./routes/passwordListRoutes');

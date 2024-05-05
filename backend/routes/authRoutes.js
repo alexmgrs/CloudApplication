@@ -1,3 +1,4 @@
+// autRoutes.js
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
@@ -8,6 +9,13 @@ const usersDirectory = path.join(__dirname, '..', '..', 'data', 'users');
 function generateAuthToken(username) {
     return jwt.sign({ username }, 'your_secret_key', { expiresIn: '1h' });
 }
+
+router.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
 // Endpoint pour l'inscription
 router.post('/register', (req, res) => {
     const { username, password } = req.body;
